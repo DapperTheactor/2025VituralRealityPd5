@@ -8,13 +8,88 @@ window.addEventListener("DOMContentLoaded",function() {
   scene = document.querySelector("a-scene"); //CSS Selector
 
   for(let i = 0; i < 100; i++){
-    let x = rnd(-20,20);
-    let z = rnd(-20,20);
+    let x = rnd(-200,200);
+    let z = rnd(-200,200);
     createTree(x,0,z);
   }
+
+  for(let i = 0; i < 100; i++){
+    let x = rnd(-500,500);
+    let z = rnd(-500,500);
+    let y = rnd(10,200);
+    createcloud(x,y,z);
+  }
+
+  for(let i = 0; i < 100; i++){
+    let x = rnd(-500,500);
+    let z = rnd(-500,500);
+    let y = rnd(10,200);
+    createhouse(x,0,z);
+  }
    //Task 2: Use the createCloud(...)  to add several clouds to the scene at various positions.
+function createcloud(x, y, z){
+  let cloud = document.createElement("a-entity");
+  let dodecahedron = document.createElement("a-dodecahedron");
+  dodecahedron.setAttribute("position","2 1 -2");
+  dodecahedron.setAttribute("radius","2");
+  dodecahedron.setAttribute("color","white");
+  cloud.append( dodecahedron );
+
+  let dodecahedron2 = document.createElement("a-dodecahedron");
+  dodecahedron2.setAttribute("position","0 1 -2");
+  dodecahedron2.setAttribute("radius","2");
+  dodecahedron2.setAttribute("color","white");
+  cloud.append( dodecahedron2 );
+
+  let dodecahedron3 = document.createElement("a-dodecahedron");
+  dodecahedron3.setAttribute("position","0 1 0");
+  dodecahedron3.setAttribute("radius","2");
+  dodecahedron3.setAttribute("color","white");
+  cloud.append( dodecahedron3 );
+
+  let dodecahedron4 = document.createElement("a-dodecahedron");
+  dodecahedron4.setAttribute("position","2 1 1");
+  dodecahedron4.setAttribute("radius","2");
+  dodecahedron4.setAttribute("color","white");
+  cloud.append( dodecahedron4 );
+
+
+  cloud.setAttribute("position",{x:x, y:y, z:z});
+  scene.append(cloud);
+}
+
 
    //Task 4: Use the createHouse(...)  to add several houses to the scene at various positions.
+  function createhouse(x, y, z){
+  let house = document.createElement("a-entity");
+
+  let box = document.createElement("a-box");
+  box.setAttribute("position","0 -1 0");
+  box.setAttribute("color","brown");
+  box.setAttribute("depth","8");
+  box.setAttribute("height","10");
+  box.setAttribute("width","8");
+  house.append( box );
+
+  let roof = document.createElement("a-cylinder");
+  roof.setAttribute("position","0 4.5 0");
+  roof.setAttribute("color","blue");
+  roof.setAttribute("segments-radial","3");
+  roof.setAttribute("depth","5");
+  roof.setAttribute("height","8");
+  roof.setAttribute("width","7");
+  roof.setAttribute("rotation","-90 90 0");
+  roof.setAttribute("scale","4.5 1 1");
+  house.append( roof );
+  house.setAttribute("position",{x:x, y:y, z:z});
+  scene.append(house);
+  }
+
+
+
+
+
+
 })
 
 /* Task 1: Create a function createCloud that,
