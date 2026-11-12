@@ -1,4 +1,4 @@
-class ufo {
+class Ufo {
   constructor(x,y,z){
     this.x = x;
     this.y = y;
@@ -33,8 +33,8 @@ class ufo {
     scene.append( this.obj );
   }
 
-  invade(){
-    this.y -= this.dy; 
+invade(){
+    this.y -= this.dy;
     this.obj.setAttribute("position",{x:this.x, y:this.y, z:this.z})
     if(this.y < 0){
       this.y = rnd(10,20);
