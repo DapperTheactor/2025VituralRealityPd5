@@ -3,7 +3,7 @@ class Ufo {
     this.x = x;
     this.y = y;
     this.z = z;
-    this.dy = 0;
+    this.dy = 0.1;
     this.obj = document.createElement("a-entity")
     let ray = document.createElement("a-cone");
     ray.setAttribute("radius",0.1);
